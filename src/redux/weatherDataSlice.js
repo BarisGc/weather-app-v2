@@ -15,10 +15,11 @@ export const fetchWeatherData = createAsyncThunk(
     console.log("typeof", typeof dataRequest.currentLatitude);
     let dataChecker = () => {
       if (
+        //Check if it is error message or coords number
         isNaN(dataRequest.currentLatitude) ||
         isNaN(dataRequest.currentLongitude)
       ) {
-        zero = dataRequest.currentLatitude; // Error Message as String
+        return dataRequest.currentLatitude; // Error Message as String
       } else {
         zero = `http://api.positionstack.com/v1/reverse?access_key=5510e8ea6ee6618565ed9ff8fb7f7cd7&query=${dataRequest.currentLatitude},${dataRequest.currentLongitude}`;
         return axios.get(zero);
@@ -51,7 +52,9 @@ export const fetchWeatherData = createAsyncThunk(
           const responseTwo = responses[2];
           const responseThree = responses[3];
           const mergedData = {
-            CurrentLocation: responseZero.data ? responseZero.data : "No Data",
+            CurrentLocation: responseZero.data
+              ? responseZero.data
+              : "The User Has Denied Location Access",
             CityCoordsByCityName: responseOne.data,
             CityCurrentDataByCityCoords: responseTwo.data,
             City5DaysDataByCityCoords: responseThree.data,
@@ -112,12 +115,14 @@ export const weatherDataSlice = createSlice({
       if (state.isCurrentLocationDataLoaded == true) {
         console.log(
           "buraya girdi mi?",
-          action.payload.CurrentLocation != "No Data"
+          action.payload.CurrentLocation !=
+            "The User Has Denied Location Access"
         );
         state.currentLocation.name =
-          action.payload.CurrentLocation != "No Data"
+          action.payload.CurrentLocation !=
+          "The User Has Denied Location Access"
             ? action.payload.CurrentLocation.data[0].region
-            : "No Data";
+            : "The User Has Denied Location Access";
       }
     },
     [fetchWeatherData.rejected]: (state, action) => {

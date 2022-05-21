@@ -20,9 +20,7 @@ function Content() {
           <Col md={{ span: 8, offset: 2 }}>
             <CardGroup className="ContentCurrentDayCardsContainer">
               <Card className="justify-content-center align-items-center ContentCurrentDayCardsContainer border-0 py-3">
-                <Card.Text className="fw-bold fst-italic mb-0 pb-0">{`Today : "${moment
-                  .unix(dataList.CityCurrentDataByCityCoords.dt)
-                  .format("ddd")}"`}</Card.Text>
+                <Card.Text className="fw-bold fst-italic mb-0 pb-0">{`Now`}</Card.Text>
                 <Card.Img
                   variant="top"
                   src={`http://openweathermap.org/img/wn/${dataList.CityCurrentDataByCityCoords.weather[0].icon}@2x.png`}
@@ -36,9 +34,16 @@ function Content() {
               </Card>
               <Card className="ContentCurrentDayCardsContainer">
                 <Card.Body className="d-flex flex-column justify-content-center align-items-center ">
-                  <Card.Text className="">
-                    {`Your Current Location: ${currentLocation.name}`}
-                  </Card.Text>
+                  {currentLocation.name ==
+                  "The User Has Denied Location Access" ? (
+                    <Card.Text className="bg-warning text-center text-dark fst-italic">
+                      {`Your Current Location: ${currentLocation.name}`}
+                    </Card.Text>
+                  ) : (
+                    <Card.Text className="">
+                      {`Your Current Location: ${currentLocation.name}`}
+                    </Card.Text>
+                  )}
                   <Card.Text className="">
                     {`Your Selected Location: ${dataList.CityCoordsByCityName[0].name}`}
                   </Card.Text>
@@ -65,6 +70,28 @@ function Content() {
           {/* Next Five Days Data */}
           <Col md={{ span: 8, offset: 2 }}>
             <Row xs={1} md={5} className="g-0 ">
+              <Col className="ContentCurrentDayCardsContainer ">
+                <Card className="ContentCurrentDayCardsContainer border-0">
+                  <Card.Body className="d-flex flex-column justify-content-center align-items-center">
+                    <Card.Text>
+                      {`${moment
+                        .unix(dataList.City5DaysDataByCityCoords.list[0].dt)
+                        .utc()
+                        .format("ddd")}`}
+                    </Card.Text>
+                    <Card.Img
+                      variant="top"
+                      src={`http://openweathermap.org/img/wn/${dataList.City5DaysDataByCityCoords.list[0].weather[0].icon}@2x.png`}
+                      className="w-50  "
+                    />
+                    <Card.Text>
+                      {`${dataList.City5DaysDataByCityCoords.list[0].main.temp.toFixed(
+                        0
+                      )} ℃`}
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </Col>
               <Col className="ContentCurrentDayCardsContainer ">
                 <Card className="ContentCurrentDayCardsContainer border-0">
                   <Card.Body className="d-flex flex-column justify-content-center align-items-center">
@@ -147,28 +174,6 @@ function Content() {
                     />
                     <Card.Text>
                       {`${dataList.City5DaysDataByCityCoords.list[32].main.temp.toFixed(
-                        0
-                      )} ℃`}
-                    </Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col className="ContentCurrentDayCardsContainer ">
-                <Card className="ContentCurrentDayCardsContainer border-0">
-                  <Card.Body className="d-flex flex-column justify-content-center align-items-center">
-                    <Card.Text>
-                      {`${moment
-                        .unix(dataList.City5DaysDataByCityCoords.list[39].dt)
-                        .utc()
-                        .format("ddd")}`}
-                    </Card.Text>
-                    <Card.Img
-                      variant="top"
-                      src={`http://openweathermap.org/img/wn/${dataList.City5DaysDataByCityCoords.list[39].weather[0].icon}@2x.png`}
-                      className="w-50  "
-                    />
-                    <Card.Text>
-                      {`${dataList.City5DaysDataByCityCoords.list[39].main.temp.toFixed(
                         0
                       )} ℃`}
                     </Card.Text>

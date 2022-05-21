@@ -87,7 +87,11 @@ function LocationSelectionDropDown() {
           <Select
             className={""}
             name="selectedLocation"
-            value={selectedLocation}
+            value={
+              selectedLocation.value == "Karaköy"
+                ? { value: "İstanbul", label: "İstanbul" }
+                : selectedLocation
+            }
             onChange={handleSelectedLocation}
             options={options}
             autoFocus
