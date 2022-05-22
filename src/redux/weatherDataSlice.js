@@ -20,8 +20,13 @@ export const fetchWeatherData = createAsyncThunk(
         isNaN(dataRequest.currentLongitude)
       ) {
         return dataRequest.currentLatitude; // Error Message as String
-      } else {
-        zero = `https://api.positionstack.com/v1/reverse?access_key=5510e8ea6ee6618565ed9ff8fb7f7cd7&query=${dataRequest.currentLatitude},${dataRequest.currentLongitude}`;
+      }
+      // else {
+      //   zero = `https://api.positionstack.com/v1/reverse?access_key=5510e8ea6ee6618565ed9ff8fb7f7cd7&query=${dataRequest.currentLatitude},${dataRequest.currentLongitude}`;
+      //   return axios.get(zero);
+      // }
+      else {
+        zero = `https://eu1.locationiq.com/v1/reverse.php?key=pk.e8d336ac0f567ea19878e840d379d4fd&lat=${dataRequest.currentLatitude}&lon=${dataRequest.currentLongitude}&format=json`;
         return axios.get(zero);
       }
     };
@@ -121,7 +126,7 @@ export const weatherDataSlice = createSlice({
         state.currentLocation.name =
           action.payload.CurrentLocation !=
           "The User Has Denied Location Access"
-            ? action.payload.CurrentLocation.data[0].region
+            ? action.payload.CurrentLocation.address.province
             : "The User Has Denied Location Access";
       }
     },
