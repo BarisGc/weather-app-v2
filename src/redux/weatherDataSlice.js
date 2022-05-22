@@ -21,7 +21,7 @@ export const fetchWeatherData = createAsyncThunk(
       ) {
         return dataRequest.currentLatitude; // Error Message as String
       } else {
-        zero = `https://api.positionstack.com/v1/reverse?access_key=5510e8ea6ee6618565ed9ff8fb7f7cd7&query=${dataRequest.currentLatitude},${dataRequest.currentLongitude}`;
+        zero = `http://api.positionstack.com/v1/reverse?access_key=5510e8ea6ee6618565ed9ff8fb7f7cd7&query=${dataRequest.currentLatitude},${dataRequest.currentLongitude}`;
         return axios.get(zero);
       }
     };
@@ -29,17 +29,17 @@ export const fetchWeatherData = createAsyncThunk(
     console.log("requestZero", requestZero);
 
     // Find City Coords by City Name
-    let one = `https://api.openweathermap.org/geo/1.0/direct?q=${dataRequest.selectedLocation.value}&units=metric&appid=ab999271f6c1804cb233abd82c852543`;
+    let one = `http://api.openweathermap.org/geo/1.0/direct?q=${dataRequest.selectedLocation.value}&units=metric&appid=ab999271f6c1804cb233abd82c852543`;
     const requestOne = await axios.get(one);
     console.log("requestOne", requestOne.data[0]);
 
     // Find City Current Weather Data by City Coords
-    let two = `https://api.openweathermap.org/data/2.5/weather?lat=${requestOne.data[0].lat}&lon=${requestOne.data[0].lon}&units=metric&appid=ab999271f6c1804cb233abd82c852543`;
+    let two = `http://api.openweathermap.org/data/2.5/weather?lat=${requestOne.data[0].lat}&lon=${requestOne.data[0].lon}&units=metric&appid=ab999271f6c1804cb233abd82c852543`;
     const requestTwo = await axios.get(two);
     console.log("requestTwo", requestTwo);
 
     // Find City 5days Weather Data by City Coords
-    let three = `https://api.openweathermap.org/data/2.5/forecast?lat=${requestOne.data[0].lat}&lon=${requestOne.data[0].lon}&units=metric&appid=ab999271f6c1804cb233abd82c852543`;
+    let three = `http://api.openweathermap.org/data/2.5/forecast?lat=${requestOne.data[0].lat}&lon=${requestOne.data[0].lon}&units=metric&appid=ab999271f6c1804cb233abd82c852543`;
     const requestThree = await axios.get(three);
     console.log("requestThree", requestThree);
 
