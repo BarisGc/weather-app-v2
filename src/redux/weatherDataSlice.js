@@ -21,7 +21,7 @@ export const fetchWeatherData = createAsyncThunk(
       ) {
         return dataRequest.currentLatitude; // Error Message as String
       } else {
-        zero = `http://api.positionstack.com/v1/reverse?access_key=5510e8ea6ee6618565ed9ff8fb7f7cd7&query=${dataRequest.currentLatitude},${dataRequest.currentLongitude}`;
+        zero = `https://api.positionstack.com/v1/reverse?access_key=5510e8ea6ee6618565ed9ff8fb7f7cd7&query=${dataRequest.currentLatitude},${dataRequest.currentLongitude}`;
         return axios.get(zero);
       }
     };
@@ -29,7 +29,7 @@ export const fetchWeatherData = createAsyncThunk(
     console.log("requestZero", requestZero);
 
     // Find City Coords by City Name
-    let one = `http://api.openweathermap.org/geo/1.0/direct?q=${dataRequest.selectedLocation.value}&units=metric&appid=ab999271f6c1804cb233abd82c852543`;
+    let one = `https://api.openweathermap.org/geo/1.0/direct?q=${dataRequest.selectedLocation.value}&units=metric&appid=ab999271f6c1804cb233abd82c852543`;
     const requestOne = await axios.get(one);
     console.log("requestOne", requestOne.data[0]);
 
