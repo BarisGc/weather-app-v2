@@ -23,7 +23,7 @@ function Content() {
                 <Card.Text className="fw-bold fst-italic mb-0 pb-0">{`Now`}</Card.Text>
                 <Card.Img
                   variant="top"
-                  src={`http://openweathermap.org/img/wn/${dataList.CityCurrentDataByCityCoords.weather[0].icon}@2x.png`}
+                  src={`https://openweathermap.org/img/wn/${dataList.CityCurrentDataByCityCoords.weather[0].icon}@2x.png`}
                   className="w-50  "
                 />
                 <Card.Body className="pt-0 ">
@@ -81,7 +81,7 @@ function Content() {
                     </Card.Text>
                     <Card.Img
                       variant="top"
-                      src={`http://openweathermap.org/img/wn/${dataList.City5DaysDataByCityCoords.list[0].weather[0].icon}@2x.png`}
+                      src={`https://openweathermap.org/img/wn/${dataList.City5DaysDataByCityCoords.list[0].weather[0].icon}@2x.png`}
                       className="w-50  "
                     />
                     <Card.Text>
@@ -103,7 +103,7 @@ function Content() {
                     </Card.Text>
                     <Card.Img
                       variant="top"
-                      src={`http://openweathermap.org/img/wn/${dataList.City5DaysDataByCityCoords.list[8].weather[0].icon}@2x.png`}
+                      src={`https://openweathermap.org/img/wn/${dataList.City5DaysDataByCityCoords.list[8].weather[0].icon}@2x.png`}
                       className="w-50  "
                     />
                     <Card.Text>
@@ -125,7 +125,7 @@ function Content() {
                     </Card.Text>
                     <Card.Img
                       variant="top"
-                      src={`http://openweathermap.org/img/wn/${dataList.City5DaysDataByCityCoords.list[16].weather[0].icon}@2x.png`}
+                      src={`https://openweathermap.org/img/wn/${dataList.City5DaysDataByCityCoords.list[16].weather[0].icon}@2x.png`}
                       className="w-50  "
                     />
                     <Card.Text>
@@ -147,7 +147,7 @@ function Content() {
                     </Card.Text>
                     <Card.Img
                       variant="top"
-                      src={`http://openweathermap.org/img/wn/${dataList.City5DaysDataByCityCoords.list[24].weather[0].icon}@2x.png`}
+                      src={`https://openweathermap.org/img/wn/${dataList.City5DaysDataByCityCoords.list[24].weather[0].icon}@2x.png`}
                       className="w-50  "
                     />
                     <Card.Text>
@@ -169,7 +169,7 @@ function Content() {
                     </Card.Text>
                     <Card.Img
                       variant="top"
-                      src={`http://openweathermap.org/img/wn/${dataList.City5DaysDataByCityCoords.list[32].weather[0].icon}@2x.png`}
+                      src={`https://openweathermap.org/img/wn/${dataList.City5DaysDataByCityCoords.list[32].weather[0].icon}@2x.png`}
                       className="w-50  "
                     />
                     <Card.Text>
